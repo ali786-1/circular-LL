@@ -1,0 +1,153 @@
+                                                                                                                                #include<stdio.h> 
+                                                                                                                                #include<stdlib.h>
+                                                                                                                                struct node  
+                                                                                                                                {
+                                                                                                                                int d;   
+                                                                                                                                struct node *next; 
+                                                                                                                                }*t,*n;
+                                                                                                                                struct node *head=NULL;  
+                                                                                                                                struct node *tail=NULL; 
+                                                                                                                                void create()
+                                                                                                                                { 
+                                                                                                                                int c,val;    
+                                                                                                                                do 
+                                                                                                                                {
+                                                                                                                                n=(struct node*)malloc(sizeof(struct node));  
+                                                                                                                                printf("enter the value");
+                                                                                                                                scanf("%d",&val);
+                                                                                                                                n->d=val;  
+                                                                                                                                n->next=NULL;
+                                                                                                                                if(head==NULL)
+                                                                                                                                {
+                                                                                                                                head=n;
+                                                                                                                                tail=n;          
+                                                                                                                                }
+                                                                                                                                else  
+                                                                                                                                {   
+                                                                                                                                tail->next=n; 
+                                                                                                                                 tail=n;  
+                                                                                                                                 tail->next=head;    
+                                                                                                                                 }
+                                                                                                                                 printf("enter 1 to continue 0 to exit");      
+                                                                                                                                 scanf("%d",&c);  
+                                                                                                                                 }while(c==1);   
+                                                                                                                                 }    
+                                                                                                                                 void display()   
+                                                                                                                                 {  
+                                                                                                                                 t=head;    
+                                                                                                                                 while(t->next!=head)   
+                                                                                                                                 {       
+                                                                                                                                 printf("%d\t",t->d);     
+                                                                                                                                 t=t->next;    
+                                                                                                                                 }        
+                                                                                                                                 printf("%d\t",t->d);    
+                                                                                                                                 }
+                                                                                                                                 void insert_at_beg()    
+                                                                                                                                 {
+                                                                                                                                 int val;    
+                                                                                                                                 n=(struct node*)malloc(sizeof(struct node));   
+                                                                                                                                 printf("enter the value");     
+                                                                                                                                 scanf("%d",&val);   
+                                                                                                                                 n->d=val;    
+                                                                                                                                 n->next=head;     
+                                                                                                                                 tail->next=n;      
+                                                                                                                                 head=n;       
+                                                                                                                                 }           
+                                                                                                                                 void insert_at_end()  
+                                                                                                                                 {
+                                                                                                                                 int val; 
+                                                                                                                                 n=(struct node*)malloc(sizeof(struct node));         
+                                                                                                                                 printf("enter value");    
+                                                                                                                                 scanf("%d",&val);     
+                                                                                                                                 n->d=val;     
+                                                                                                                                 tail->next=n;     
+                                                                                                                                 n->next=head;       
+                                                                                                                                 tail=n;      
+                                                                                                                                 }   
+                                                                                                                                 void insert_at_pos()     
+                                                                                                                                 {    
+                                                                                                                                 int val,i,pos;       
+                                                                                                                                 n=(struct node*)malloc(sizeof(struct node));       
+                                                                                                                                 printf("enter the value");      
+                                                                                                                                 scanf("%d",&val);    
+                                                                                                                                 printf("enter posuition");       
+                                                                                                                                 scanf("%d",&pos); 
+                                                                                                                                 t=head;       
+                                                                                                                                 for(i=1;i<pos-1;i++)     
+                                                                                                                                 {
+                                                                                                                                 t=t->next;     
+                                                                                                                                 }
+                                                                                                                                 n->d=val;     
+                                                                                                                                 n->next=t->next;     
+                                                                                                                                 t->next=n;     
+                                                                                                                                 }
+                                                                                                                                 void delete_at_beg()    
+                                                                                                                                 {               
+                                                                                                                                 t=head; 
+                                                                                                                                 head=head->next; 
+                                                                                                                                 tail->next=head;  
+                                                                                                                                 t->next=NULL;    
+                                                                                                                                 } 
+                                                                                                                                 void delete_at_end()    
+                                                                                                                                 {
+                                                                                                                                 t=head;    
+                                                                                                                                 while(t->next!=tail)   
+                                                                                                                                 {
+                                                                                                                                 t=t->next;    
+                                                                                                                                 }
+                                                                                                                                 tail->next=NULL;     
+                                                                                                                                 t->next=head;   
+                                                                                                                                 tail=t;     
+                                                                                                                                 }
+                                                                                                                                 void delete_at_pos()    
+                                                                                                                                 {
+                                                                                                                                 int pos,i;   
+                                                                                                                                 t=head;   
+                                                                                                                                 for(i=1;i<pos-1;i++)   
+                                                                                                                                 {
+                                                                                                                                 t=t->next;   
+                                                                                                                                 }     
+                                                                                                                                 t->next=t->next->next;     
+                                                                                                                                 }
+                                                                                                                                 void count()  
+                                                                                                                                 {      
+                                                                                                                                 int count=0;     
+                                                                                                                                 t=head;      
+                                                                                                                                 while(t->next!=head)    
+                                                                                                                                 {        
+                                                                                                                                 t=t->next;  
+                                                                                                                                 count=count+1;   
+                                                                                                                                 }   
+                                                                                                                                 printf("number of elements in a list =%d",count); 
+                                                                                                                                 }
+                                                                                                                                 void main() 
+                                                                                                                                 {
+                                                                                                                                 int ch,choice,j;    
+                                                                                                                                 create();    
+                                                                                                                                 printf("now list is\n");
+                                                                                                                                 display();    
+                                                                                                                                 printf("enter your choice 1.insertion 2.deletion 3.length");     
+                                                                                                                                 scanf("%d",&choice);      
+                                                                                                                                 switch(choice)  
+                                                                                                                                 {  
+                                                                                                                                 case 1:printf("enter your choice 1.at beginning 2.at ending 3.at specific position"); 
+                                                                                                                                 scanf("%d",&j);    
+                                                                                                                                 if(j==1)  
+                                                                                                                                 {
+                                                                                                                                 insert_at_beg();   
+                                                                                                                                 printf("now list after insertion is\n");   
+                                                                                                                                 display();  
+                                                                                                                                 }
+                                                                                                                                 if(j==2)     
+                                                                                                                                 {
+                                                                                                                                 insert_at_end(); 
+                                                                                                                                 printf("after insertion \n");    
+                                                                                                                                 display();    
+                                                                                                                                 }
+                                                                                                                                 if(j==3)       
+                                                                                                                                 {
+                                                                                                                                 insert_at_pos();   
+                                                                                                                                 printf("after insertion\n");   
+                                                                                                                                 display();    
+                                                                                                                                 }
+                                                                                                                                
